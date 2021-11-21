@@ -1,9 +1,12 @@
+from DB.conexion import DAO
+import funciones
 
 def menuPrincipal():
     continuar = True
     while(continuar):
         opcionCorrecta = False
         while(not opcionCorrecta):
+            print("------------------------------")
             print("...:::  MENÚ PRINCIPAL  :::...")
             print("1. Listar cursos")
             print("2. Registrar curso")
@@ -26,7 +29,26 @@ def menuPrincipal():
 
 
 def ejecutarOpcion(opcion):
-    print("Haz seleccionado la opción: ", opcion)
+    
+    dao = DAO()
+
+    if opcion == 1:
+        try:
+            cursos = dao.listarCursos()
+            if len(cursos) > 0:
+                funciones.listarCursos(cursos)
+            else:
+                print("No se encontraron registros de cursos.")
+        except:
+            print("Ocurrió un error")
+    elif opcion == 2:
+        print("Registro")
+    elif opcion == 3:
+        print("Actualizar")
+    elif opcion == 4:
+        print("Eliminar")
+    else:
+        print("Opción no válida...")
 
 
 menuPrincipal()
