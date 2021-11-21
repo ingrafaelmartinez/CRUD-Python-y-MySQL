@@ -6,3 +6,11 @@ def listarCursos(cursos):
         print(datos.format(contador, cur[0], cur[1], cur[2]))
         contador = contador + 1
     print(" ")
+
+def registrarCurso():
+    codigo = int(input("Ingrese el código del curso: "))
+    nombre = input("Ingrese el nombre del curso: ")
+    creditos = int(input("Ingrese los créditos del curso: "))
+
+    curso = (codigo, nombre, creditos)
+    return curso

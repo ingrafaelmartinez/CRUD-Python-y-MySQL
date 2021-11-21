@@ -42,7 +42,11 @@ def ejecutarOpcion(opcion):
         except:
             print("Ocurrió un error")
     elif opcion == 2:
-        print("Registro")
+        curso = funciones.registrarCurso()
+        try:
+            dao.registrarCurso(curso)
+        except:
+            print("Ocurrió un error")
     elif opcion == 3:
         print("Actualizar")
     elif opcion == 4:

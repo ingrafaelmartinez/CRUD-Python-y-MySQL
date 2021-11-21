@@ -10,3 +10,5 @@ CREATE TABLE IF NOT EXISTS cursos(
     creditos INT NOT NULL,
     fecha_creacion DATETIME DEFAULT current_timestamp
 );
+
+INSERT INTO cursos(codigo, nombre, creditos) VALUES(123, 'Ingeniería de Sistemas', 6);

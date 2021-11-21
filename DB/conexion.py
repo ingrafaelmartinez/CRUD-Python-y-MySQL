@@ -29,3 +29,16 @@ class DAO():
                 
             except Error as ex:
                 print("Error al intentar conectar a la base de datos: ", ex)
+
+    
+    def registrarCurso(self, curso):
+        if self.conexion.open:
+            try:
+                cursor = self.conexion.cursor()
+                query = " INSERT INTO cursos(codigo, nombre, creditos) VALUES('{0}', '{1}', '{2}') "
+                cursor.execute(query.format(curso[0], curso[1], curso[2]))
+                self.conexion.commit()
+                print("¡Curso registrado exitosamente!\n")
+            except Error as ex:
+                self.conexion.rollback()
+                print("Error al intentar conectar a la base de datos: ", ex)
