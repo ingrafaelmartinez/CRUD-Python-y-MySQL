@@ -20,7 +20,7 @@ class DAO():
     
 
     def listarCursos(self):
-        if self.conexion.connect():
+        if self.conexion.open:
             try:
                 cursor = self.conexion.cursor()
                 cursor.execute(" SELECT * FROM cursos ORDER BY nombre ASC ")
