@@ -42,3 +42,15 @@ class DAO():
             except Error as ex:
                 self.conexion.rollback()
                 print("Error al intentar conectar a la base de datos: ", ex)
+
+    def eliminarCurso(self, codigoCursoEliminar):
+        if self.conexion.open:
+            try:
+                cursor = self.conexion.cursor()
+                query = " DELETE FROM cursos WHERE codigo = '{0}' "
+                cursor.execute(query.format(codigoCursoEliminar))
+                self.conexion.commit()
+                print("¡Curso eliminado exitosamente!\n")
+            except Error as ex:
+                self.conexion.rollback()
+                print("Error al intentar conectar a la base de datos: ", ex)

@@ -50,7 +50,18 @@ def ejecutarOpcion(opcion):
     elif opcion == 3:
         print("Actualizar")
     elif opcion == 4:
-        print("Eliminar")
+        try:
+            cursos= dao.listarCursos()
+            if len(cursos) > 0:
+                codigoEliminar = funciones.cursoEliminar(cursos)
+                if not(codigoEliminar == ""):
+                    dao.eliminarCurso(codigoEliminar)
+                else:
+                    print("No se encontraron cursos con el código ingresado...\n")
+            else:
+                print("No se encontraron registros de cursos.")
+        except:
+            print("Ocurrió un error")
     else:
         print("Opción no válida...")
 

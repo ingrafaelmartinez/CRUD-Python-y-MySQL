@@ -34,3 +34,18 @@ def registrarCurso():
 
     curso = (codigo, nombre, creditos)
     return curso
+
+def cursoEliminar(cursos):
+    listarCursos(cursos)
+    existeCodigo = False
+
+    codigoEliminar = input("Ingrese el código del curso a eliminar: ")
+    for cur in cursos:
+        if cur[0] == codigoEliminar:
+            existeCodigo = True
+            break
+
+    if not existeCodigo:
+        codigoEliminar = ""
+
+    return codigoEliminar
