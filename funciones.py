@@ -1,3 +1,4 @@
+
 def listarCursos(cursos):
     print("\nCursos: \n")
     contador = 1
@@ -8,6 +9,7 @@ def listarCursos(cursos):
         contador = contador + 1
     print("------------------------------------------------------------------------")
     print(" ")
+
 
 def registrarCurso():
     codigoCorrecto = False
@@ -34,6 +36,36 @@ def registrarCurso():
 
     curso = (codigo, nombre, creditos)
     return curso
+
+
+def actualizacionCurso(cursos):
+    listarCursos(cursos)
+    existeCodigo = False
+
+    codigoActualizar = input("Ingrese el código del curso a actualizar: ")
+    for cur in cursos:
+        if cur[0] == codigoActualizar:
+            existeCodigo = True
+            break
+    
+    if existeCodigo:
+        nombre = input("Ingrese el nombre del curso a modificar: ")
+
+        creditosCorrectos = False
+        while(not creditosCorrectos):
+            creditos = input("Ingrese los créditos del curso a modificar: ")
+            if creditos.isnumeric():
+                if (int(creditos) > 0):
+                    creditosCorrectos = True
+                    creditos = int(creditos)
+                else:
+                    print("Los créditos deben ser mayor a 0.")
+            else:
+                print("¡ERROR, Valor no válido! Debe ingresar un número entero.")
+
+        curso = (codigoActualizar, nombre, creditos)
+        return curso
+
 
 def cursoEliminar(cursos):
     listarCursos(cursos)
